@@ -1,15 +1,13 @@
 package com.example.admin.rxandroid;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.disposables.Disposable;
+import rx.Observable;
+import rx.Observer;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -24,15 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
         listObservable.subscribe(new Observer<List<String>>() {
             @Override
-            public void onSubscribe(Disposable d) {
+            public void onCompleted() {
 
-            }
-
-            @Override
-            public void onNext(List<String> strings) {
-                for (int i = 0; i < strings.size(); i++) {
-                    Log.d(TAG, "onNext: color " + strings.get(i));
-                }
             }
 
             @Override
@@ -41,10 +32,10 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onComplete() {
+            public void onNext(List<String> strings) {
 
             }
-        });
+        })
     }
 
 
